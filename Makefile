@@ -6,27 +6,29 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 		ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_tolower.c ft_strtrim.c\
 		ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_substr.c ft_toupper.c
 
-
 OFILES = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
+# Colors
+GREEN = \033[0;32m
+NC = \033[0m
+
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-
 $(NAME): $(OFILES)
-	ar rcs $(NAME) $(OFILES)
-
+	@ar rcs $(NAME) $(OFILES)
+	@printf "\033[0;32m✓ libft.a created\033[0m\n"
 
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean $(NAME)
 
